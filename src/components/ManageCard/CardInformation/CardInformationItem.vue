@@ -1,0 +1,55 @@
+<template>
+    <div class="card-information-item flex items-center justify-between p-6" @click="handleToggle">
+       <div class="flex items-center">
+         <img :src="item.icon" alt="card-item-icon" />
+         <span class="ml-3 text-sm font-bold ">
+            {{ item.name }}
+         </span>
+       </div>
+       <img :src="isToggle ? imageSrc[1] : imageSrc[0]" alt="" />
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+
+export interface ICardInformationItem {
+    id: number;
+    name: string;
+    icon: string;
+}
+
+export default defineComponent({
+    setup() {},
+    props: {
+        item: {
+            type: Object as PropType<ICardInformationItem>
+        }
+    },
+    data() {
+        return {
+            imageSrc: [
+                'src/assets/icons/down-arrow.svg',
+                'src/assets/icons/up-arrow.svg'
+            ],
+            isToggle: false,
+        }
+    },
+    methods: {
+        handleToggle() {
+            this.isToggle = !this.isToggle;
+        }
+    }
+})
+
+</script>
+
+<style scoped>
+.card-information-item {
+    background-color: #FAFCFF;
+    width: 366px;
+    height: 72px;
+    color: #0C365A;
+    border: 1px solid #F5F5F5;
+}
+</style>
