@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
-export interface ICardInformationItem {
+export interface ICardManageInfoItem {
     id: number;
     name: string;
     icon: string;
@@ -23,7 +23,7 @@ export default defineComponent({
     setup() {},
     props: {
         item: {
-            type: Object as PropType<ICardInformationItem>
+            type: Object as PropType<ICardManageInfoItem>
         }
     },
     data() {
