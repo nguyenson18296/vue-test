@@ -1,5 +1,5 @@
 <template>
-    <div class="card-information-item flex items-center justify-between p-6" @click="handleToggle">
+    <div class="card-information-item flex items-center justify-between p-6 mb-6" @click="handleToggle">
        <div class="flex items-center">
          <img :src="item.icon" alt="card-item-icon" />
          <span class="ml-3 text-sm font-bold ">
@@ -44,7 +44,7 @@ export default defineComponent({
 
 </script>
 
-<style scoped>
+<style lang="scss">
 .card-information-item {
     background-color: #FAFCFF;
     width: 366px;
@@ -52,4 +52,5 @@ export default defineComponent({
     color: #0C365A;
     border: 1px solid #F5F5F5;
 }
+
 </style>
