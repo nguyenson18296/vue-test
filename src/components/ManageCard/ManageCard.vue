@@ -4,8 +4,17 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
 import CardAction from "./CardActions/CardAction.vue";
+
+export default defineComponent({
+  setup() {},
+  components: {
+    CardAction
+  },
+})
 
 </script>
 

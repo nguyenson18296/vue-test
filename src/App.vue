@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import CardInfo from '../src/components/CardInfo/CardInfo.vue';
+import CardOverview from '../src/components/CardOverview/CardOverview.vue';
 
 </script>
 
 <template>
   <div class="container h-full">
-    <CardInfo />
+    <CardOverview />
   </div>
 </template>
 

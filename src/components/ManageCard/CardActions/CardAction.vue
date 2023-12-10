@@ -12,7 +12,7 @@
         </h4>
       </div>
     </div>
-    <CardInformation />
+    <CardManage />
   </div>
 </template>
 
@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue';
 
 import { ICardAction } from '../../../types/types'
-import CardInformation from '../CardInformation/CardInformation.vue';
+import CardManage from '../CardManage/CardManage.vue';
 
 const mockedCardActions: ICardAction[] = [
   {
@@ -58,7 +58,7 @@ const mockedCardActions: ICardAction[] = [
 export default defineComponent({
     setup() {},
     components: {
-        CardInformation,
+        CardManage,
     },
     data() {
         const actions = mockedCardActions;

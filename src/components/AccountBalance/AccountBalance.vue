@@ -11,10 +11,12 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-const total = ref(3000)
+export default defineComponent ({
+    setup() {},
+})
 </script>
 
 <style scoped>

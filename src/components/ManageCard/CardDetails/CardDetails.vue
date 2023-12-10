@@ -1,17 +1,17 @@
 <template>
   <div>
-    <CardInformationItem :item="item" />
+    <CardManageItem :item="item" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import CardInformationItem, {
-  ICardInformationItem
-} from '../CardInformation/CardInformationItem.vue'
+import CardManageItem, {
+  ICardManageInfoItem
+} from '../CardManage/CardManageItem.vue'
 
-const mockedItem: ICardInformationItem = {
+const mockedItem: ICardManageInfoItem = {
   id: 1,
   name: 'Card details',
   icon: '/src/assets/icons/card-details.svg'
@@ -19,7 +19,7 @@ const mockedItem: ICardInformationItem = {
 
 export default defineComponent({
   components: {
-    CardInformationItem
+    CardManageItem
   },
   setup() {},
   data() {
