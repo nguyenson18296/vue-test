@@ -5,7 +5,29 @@
             "id": 1,
             "card_number": "1234 1234 1234 1234",
             "expired_date": "12/23",
-            "cvv": "555"
+            "cvv": "555",
+            "is_card_freezed": false
+        },
+        {
+            "id": 2,
+            "card_number": "5678 5678 5678 5678",
+            "expired_date": "12/24",
+            "cvv": "111",
+            "is_card_freezed": true
+        },
+        {
+            "id": 3,
+            "card_number": "1245 1256 1252 7722",
+            "expired_date": "12/24",
+            "cvv": "111",
+            "is_card_freezed": false
+        },
+        {
+            "id": 4,
+            "card_number": "3544 6789 2567 1666",
+            "expired_date": "12/24",
+            "cvv": "111",
+            "is_card_freezed": false
         }
     ]
 }

@@ -7,7 +7,10 @@
       <img src="/src/assets/icons/eye.svg" />
       <span class="ml-1.5"> Show card number </span>
     </div>
-    <div class="mb-7 mt-10 mx-auto p-6 w-[360px] h-[220px] bg-[#01D167] rounded-xl">
+    <div
+      class="mb-7 mt-10 mx-auto p-6 w-[360px] h-[220px] bg-[#01D167] rounded-xl"
+      :class="isCardActive ? '' : 'opacity-50'"
+    >
       <img src="/src/assets/icons/logo.svg" class="float-right" />
       <div class="clear-both" />
       <h1 class="card-owner-name font-bold text-[22px]">Mark Henry</h1>
@@ -36,6 +39,7 @@ export interface ICardInformation {
   card_number: string
   expired_date: string
   cvv: string
+  is_card_freezed: boolean
 }
 
 export default defineComponent({
@@ -46,6 +50,7 @@ export default defineComponent({
   data() {
     return {
       showCardNumber: false,
+      isCardActive: true,
       formattedCVV: ['', '', '']
     }
   },
@@ -55,7 +60,8 @@ export default defineComponent({
     }
   },
   created() {
-    this.formattedCVV = this.card.cvv.split('')
+    this.formattedCVV = this.card.cvv.split('');
+    this.isCardActive = !this.card?.is_card_freezed;
   },
   methods: {
     onToggleShowCardNumber() {

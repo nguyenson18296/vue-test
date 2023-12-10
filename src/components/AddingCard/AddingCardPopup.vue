@@ -1,6 +1,5 @@
 <template>
-  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  <modal :open="open" :close="(showModal = false)">
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
       <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
         <div
@@ -63,25 +62,36 @@
         </div>
       </div>
     </div>
-  </div>
+  </modal>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
+import Modal from '../Modal/ModalComponent.vue'
+
 export default defineComponent({
+  name: 'AddingCardModal',
+  components: {
+    Modal
+  },
   setup() {},
   emits: ['add-card'],
   props: {
     addCard: {
-        type: Function
+      type: Function
     },
-    onCloseForm: {
-        type: Function
+    onCloseModal: {
+      type: Function
+    },
+    open: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
+      showModal: false,
       card_number: '',
       errorMessage: ''
     }
@@ -95,11 +105,11 @@ export default defineComponent({
       }
     },
     onSubmit() {
-        this.$emit('add-card', this.card_number);
-        this.onCloseForm();
+      this.$emit('add-card', this.card_number)
+      this.onCloseModal()
     },
     onClose() {
-        this.onCloseForm();
+      this.onCloseModal()
     }
   }
 })
