@@ -2,15 +2,13 @@
   <div class="adding-card flex items-center">
     <img src="/src/assets/icons/add-card.svg" alt="add-card" />
     <span class="new-card font-bold ml-1.5" @click="isShowForm = true"> New card </span>
-    <div v-if="isShowForm">
-      <AddingCardModal :onCloseForm="onCloseForm" @add-card="addCard" />
-    </div>
+    <AddingCardPopup :open="isShowForm" :onCloseModal="onCloseModal" @add-card="addCard" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import AddingCardModal from './AddingCardModal.vue'
+import AddingCardPopup from './AddingCardPopup.vue'
 
 export default defineComponent({
   setup() {},
@@ -25,16 +23,11 @@ export default defineComponent({
     }
   },
   components: {
-    AddingCardModal
+    AddingCardPopup
   },
   methods: {
-    onCloseForm() {
-      this.isShowForm = false;
-    }
-  },
-  watch: {
-    isShowForm(value) {
-      console.log("value", value);
+    onCloseModal() {
+      this.isShowForm = false
     }
   }
 })
