@@ -26,6 +26,7 @@ or
 ```sh
 yarn dev
 ```
+#### * Work best on screen 414px
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
