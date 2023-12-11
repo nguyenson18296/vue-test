@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrapper p-6 w-full">
+  <div class="card-wrapper py-6 px-0 w-full">
     <div
       class="relative mb-7 mt-10 mx-auto p-6 w-[360px] h-[220px] bg-[#01D167] rounded-xl"
       :class="isActive ? '' : 'opacity-50'"

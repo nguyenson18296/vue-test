@@ -7,6 +7,7 @@
     <CardTabs />
     <swiper
       :slidesPerView="'auto'"
+      :centeredSlides="true"
       :spaceBetween="30"
       :pagination="{
         clickable: true
@@ -14,7 +15,7 @@
       :modules="modules"
       @activeIndexChange="onChange"
     >
-      <swiper-slide v-for="card in cards" :key="card.id">
+      <swiper-slide class="swiper-slide-css" v-for="card in cards" :key="card.id">
         <CardInformation :card="card" :isActive="!activeCard.is_card_freezed" />
       </swiper-slide>
     </swiper>
@@ -69,7 +70,7 @@ export default defineComponent({
     CardTabs
   },
   async created() {
-    const response = await fetch('src/mocks/cards.json')
+    const response = await fetch('/mocks/cards.json')
     const data = await response.json()
     this.cards = data.response;
     this.activeCard = this.cards[this.activeIndex];
@@ -115,8 +116,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.manage-card {
-  color: #0c365a;
+<style>
+.swiper-slide-css {
+  width: 84%;
 }
 </style>
