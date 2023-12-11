@@ -1,5 +1,4 @@
 [build]
-    functions = "src"
     command = "yarn build-only"
     publish = "dist"
 [functions]
