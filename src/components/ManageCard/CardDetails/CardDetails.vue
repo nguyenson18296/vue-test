@@ -7,9 +7,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import CardManageItem, {
-  ICardManageInfoItem
-} from '../CardManage/CardManageItem.vue'
+import CardManageItem, { ICardManageInfoItem } from '../CardManage/CardManageItem.vue'
 
 const mockedItem: ICardManageInfoItem = {
   id: 1,

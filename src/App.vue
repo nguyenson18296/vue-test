@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import CardOverview from '../src/components/CardOverview/CardOverview.vue';
-
+import CardOverview from '../src/components/CardOverview/CardOverview.vue'
 </script>
 
 <template>
@@ -11,7 +10,7 @@ import CardOverview from '../src/components/CardOverview/CardOverview.vue';
 
 <style scoped>
 .container {
-  background-color: #0C365A;
+  background-color: #0c365a;
   color: #ffffff;
 }
 </style>

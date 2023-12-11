@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import RecentTransactions from '../RecentTransactions/RecentTransactions.vue';
-import CardDetails from '../CardDetails/CardDetails.vue';
+import { defineComponent } from 'vue'
+import RecentTransactions from '../RecentTransactions/RecentTransactions.vue'
+import CardDetails from '../CardDetails/CardDetails.vue'
 
 export default defineComponent({
   components: {

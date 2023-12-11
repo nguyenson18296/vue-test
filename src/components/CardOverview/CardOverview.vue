@@ -1,30 +1,32 @@
 <template>
-  <div class="py-8">
-    <div class="flex items-end justify-between px-6">
-      <AccountBalance />
-      <AddingCard :addCard="addCard" :isShowForm="isShowForm" />
+  <div class="pt-8">
+    <div class="sticky top-8 left-0 z-0">
+      <div class="flex items-end justify-between px-6">
+        <AccountBalance />
+        <AddingCard :addCard="addCard" :isShowForm="isShowForm" />
+      </div>
+      <CardTabs />
+      <swiper
+        :slidesPerView="'auto'"
+        :centeredSlides="true"
+        :spaceBetween="30"
+        :pagination="{
+          clickable: true
+        }"
+        :modules="modules"
+        @activeIndexChange="onChange"
+      >
+        <swiper-slide class="swiper-slide-css" v-for="card in cards" :key="card.id">
+          <CardInformation v-if="activeCard" :card="card" :isActive="!activeCard.is_card_freezed" />
+        </swiper-slide>
+      </swiper>
     </div>
-    <CardTabs />
-    <swiper
-      :slidesPerView="'auto'"
-      :centeredSlides="true"
-      :spaceBetween="30"
-      :pagination="{
-        clickable: true
-      }"
-      :modules="modules"
-      @activeIndexChange="onChange"
-    >
-      <swiper-slide class="swiper-slide-css" v-for="card in cards" :key="card.id">
-        <CardInformation v-if="activeCard" :card="card" :isActive="!activeCard.is_card_freezed" />
-      </swiper-slide>
-    </swiper>
-    <div class="manage-card" v-if="activeCard">
-      <CardAction 
-      :card="activeCard"
-      :isActive="!activeCard.is_card_freezed"
-      @delete-card="onDeleteCard" 
-      @on-toggle-freezez-card="onToggleFreezeCard" 
+    <div class="manage-card relative z-10" v-if="activeCard">
+      <CardAction
+        :card="activeCard"
+        :isActive="!activeCard.is_card_freezed"
+        @delete-card="onDeleteCard"
+        @on-toggle-freezez-card="onToggleFreezeCard"
       />
     </div>
   </div>
@@ -36,13 +38,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 import AccountBalance from '../AccountBalance/AccountBalance.vue'
 import AddingCard from '../AddingCard/AddingCard.vue'
 import CardInformation, { ICardInformation } from '../CardInformation//CardInformation.vue'
 import CardAction from '../ManageCard/CardActions/CardAction.vue'
-import CardTabs from '../CardTabs/CardTabs.vue';
+import CardTabs from '../CardTabs/CardTabs.vue'
 import { generateExpiredDate, generateCVV } from '../../utils/utils'
 
 export default defineComponent({
@@ -57,7 +59,7 @@ export default defineComponent({
       activeIndex: 0,
       isShowForm: false,
       randomKey: 0,
-      activeCard: undefined,
+      activeCard: undefined
     }
   },
   components: {
@@ -72,8 +74,8 @@ export default defineComponent({
   async created() {
     const response = await fetch('/mocks/cards.json')
     const data = await response.json()
-    this.cards = data.response;
-    this.activeCard = this.cards[this.activeIndex];
+    this.cards = data.response
+    this.activeCard = this.cards[this.activeIndex]
   },
   methods: {
     addCard(number: string) {
@@ -90,29 +92,29 @@ export default defineComponent({
       if (isProxy(varuable)) {
         const rawObject = toRaw(varuable)
         this.activeIndex = rawObject?.activeIndex ?? 0
-        this.activeCard = this.cards[this.activeIndex];
+        this.activeCard = this.cards[this.activeIndex]
       }
     },
     onDeleteCard(id: number) {
-        const newListCard = this.cards.filter(item => item.id !== id);
-        this.cards = newListCard;
+      const newListCard = this.cards.filter((item) => item.id !== id)
+      this.cards = newListCard
     },
     onToggleFreezeCard(id: number) {
-        const updatedCardIndex = this.cards.findIndex(item => item.id === id);
-    // Update the specific card in the cards array
-    this.cards[updatedCardIndex] = reactive({
+      const updatedCardIndex = this.cards.findIndex((item) => item.id === id)
+      // Update the specific card in the cards array
+      this.cards[updatedCardIndex] = reactive({
         ...this.cards[updatedCardIndex],
         is_card_freezed: !this.cards[updatedCardIndex].is_card_freezed
-    });
+      })
 
-    // Update the activeCard object directly (if it's supposed to be the same as the updated card)
-    this.activeCard = reactive({
+      // Update the activeCard object directly (if it's supposed to be the same as the updated card)
+      this.activeCard = reactive({
         ...this.activeCard,
         is_card_freezed: !this.activeCard.is_card_freezed
-    });
-    this.$forceUpdate();
+      })
+      this.$forceUpdate()
     }
-  },
+  }
 })
 </script>
 

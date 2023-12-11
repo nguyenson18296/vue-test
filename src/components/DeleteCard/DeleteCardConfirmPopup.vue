@@ -37,7 +37,7 @@ export default defineComponent({
     },
     onDeleteCard: {
       type: Function
-    },
+    }
   },
   data() {
     return {
@@ -52,7 +52,7 @@ export default defineComponent({
       this.onCloseModal()
     },
     onDelete() {
-      this.onDeleteCard();
+      this.onDeleteCard()
     }
   }
 })

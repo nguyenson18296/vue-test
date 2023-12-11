@@ -1,37 +1,37 @@
 {
-    "success": true,
-    "response": [
-        {
-            "id": 1,
-            "name": "Hamleys",
-            "date": "05/20/2020",
-            "balance": "150",
-            "type": "payment",
-            "transaction_type": "storage"
-        },
-        {
-            "id": 2,
-            "name": "Hamleys",
-            "date": "05/20/2020",
-            "balance": "-150",
-            "type": "payment",
-            "transaction_type": "travel"
-        },
-        {
-            "id": 3,
-            "name": "Hamleys",
-            "date": "05/20/2020",
-            "balance": "-150",
-            "type": "payment",
-            "transaction_type": "shopping"
-        },
-        {
-            "id": 4,
-            "name": "Hamleys",
-            "date": "05/20/2020",
-            "balance": "-150",
-            "type": "payment",
-            "transaction_type": "storage"
-        }
-    ]
+  "success": true,
+  "response": [
+    {
+      "id": 1,
+      "name": "Hamleys",
+      "date": "05/20/2020",
+      "balance": "150",
+      "type": "payment",
+      "transaction_type": "storage"
+    },
+    {
+      "id": 2,
+      "name": "Hamleys",
+      "date": "05/20/2020",
+      "balance": "-150",
+      "type": "payment",
+      "transaction_type": "travel"
+    },
+    {
+      "id": 3,
+      "name": "Hamleys",
+      "date": "05/20/2020",
+      "balance": "-150",
+      "type": "payment",
+      "transaction_type": "shopping"
+    },
+    {
+      "id": 4,
+      "name": "Hamleys",
+      "date": "05/20/2020",
+      "balance": "-150",
+      "type": "payment",
+      "transaction_type": "storage"
+    }
+  ]
 }

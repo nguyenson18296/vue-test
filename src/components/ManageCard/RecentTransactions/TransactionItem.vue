@@ -21,21 +21,18 @@
       </div>
     </div>
     <div class="flex items-center">
-        <span
-            class="transaction-item__balance font-bold mr-2.5"
-            :class="balanceClassName"
-        >
-            {{ transactionbalance }}
-        </span>
-        <img src="/src/assets/icons/next.svg" alt="next" />
+      <span class="transaction-item__balance font-bold mr-2.5" :class="balanceClassName">
+        {{ transactionbalance }}
+      </span>
+      <img src="/src/assets/icons/next.svg" alt="next" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue'
 
-import { formatDate } from "../../../utils/utils";
+import { formatDate } from '../../../utils/utils'
 
 export interface ITransactionItem {
   id: number
@@ -68,13 +65,15 @@ export default defineComponent({
   },
   computed: {
     transactionbalance() {
-        return Number(this.item.balance) > 0 ? `+ S$ ${this.item.balance}` : `- S$ ${this.item.balance}`;
+      return Number(this.item.balance) > 0
+        ? `+ S$ ${this.item.balance}`
+        : `- S$ ${this.item.balance}`
     },
     balanceClassName() {
-        return Number(this.item.balance) > 0 ? `income` : `outcome`;
+      return Number(this.item.balance) > 0 ? `income` : `outcome`
     },
     transactionDate() {
-        return formatDate(this.item.date);
+      return formatDate(this.item.date)
     }
   }
 })
@@ -114,7 +113,7 @@ export default defineComponent({
   }
 
   .balance.income {
-    color: #01D167;
+    color: #01d167;
   }
 
   .balance.outcome {
