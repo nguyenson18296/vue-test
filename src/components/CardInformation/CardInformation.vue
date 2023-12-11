@@ -24,7 +24,7 @@
       </div>
     </div>
     <div
-      class="card-wrapper__show-card rounded-md absolute -right-2 top-8 w-[155px] h-[40px] flex items-center text-center text-xs font-bold py-1.5 px-2.5 z-0"
+      class="card-wrapper__show-card rounded-md absolute right-0.5 top-8 w-[155px] h-[40px] flex items-center text-center text-xs font-bold py-1.5 px-2.5 z-0"
       @click="onToggleShowCardNumber"
     >
       <img src="/src/assets/icons/eye.svg" />
