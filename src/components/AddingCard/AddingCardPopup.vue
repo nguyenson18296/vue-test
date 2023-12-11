@@ -47,7 +47,7 @@
             <button
               type="button"
               class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto disabled:opacity-75"
-              :disabled="errorMessage || card_number.length !== 16"
+              :disabled="!!errorMessage || card_number.length !== 16"
               @click="onSubmit"
             >
               Submit
@@ -80,7 +80,8 @@ export default defineComponent({
   emits: ['add-card'],
   props: {
     addCard: {
-      type: Function
+      type: Function,
+      default: () => {}
     },
     onCloseModal: {
       type: Function
