@@ -2,7 +2,7 @@
   <div class="fixed w-full h-full top-0 left-0 flex items-center justify-center z-10" v-if="open">
     <div class="absolute w-full h-full bg-gray-900 opacity-50" @click="close"></div>
 
-    <div class="absolute w-11/12 max-h-full" :class="maxWidth">
+    <div class="absolute w-11/12 max-h-full">
       <div class="container bg-white overflow-hidden md:rounded">
         <div
           class="px-2 py-2 leading-none flex justify-between items-center font-medium text-sm bg-gray-100 border-b select-none"
@@ -20,25 +20,19 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
     open: {
       type: Boolean,
-      default: false,
+      default: false
     }
   },
-  // data() {
-  //     return {
-  //       open: false,
-  //     };
-  //   },
-    methods: {
-      close() {
-        // this.open = false;
-        this.$emit("close");
-      },
-    },
+  methods: {
+    close() {
+      this.$emit('close')
+    }
+  }
 })
 </script>

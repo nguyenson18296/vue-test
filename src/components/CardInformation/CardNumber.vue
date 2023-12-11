@@ -1,35 +1,43 @@
 <template>
-  <div class="card-number mt-4 flex items-center">
-    <div>
-      <span 
+  <div class="card-number mt-[30px] h-[20px] flex items-center">
+    <div class="w-[50px]">
+      <span
         class="text-sm"
         :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
-        v-for="(number, index) in card_number_format[0]" :key="index"
-    >
-        {{ show_card_number ? number : "•" }}
+        v-for="(number, index) in card_number_format[0]"
+        :key="index"
+      >
+        {{ show_card_number ? number : '•' }}
       </span>
     </div>
-    <div class="ml-6">
+    <div class="w-[50px] ml-6">
       <span
         class="text-sm"
         :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
         v-for="(number, index) in card_number_format[1]"
         :key="index"
       >
-        {{ show_card_number ? number : "•" }}
+        {{ show_card_number ? number : '•' }}
       </span>
     </div>
-    <div class="ml-6">
-      <span 
+    <div class="w-[50px] ml-6">
+      <span
         class="text-sm"
-        :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
-         v-for="(number, index) in card_number_format[2]" :key="index"
-        >
-        {{ show_card_number ? number : "•" }}
+        :class="
+          show_card_number ? 'number tracking-wider text-sm font-bold' : 'bullet ml-1 font-bold'
+        "
+        v-for="(number, index) in card_number_format[2]"
+        :key="index"
+      >
+        {{ show_card_number ? number : '•' }}
       </span>
     </div>
     <div class="ml-6 text-sm">
-      <span class="number text-sm font-bold" v-for="(number, index) in card_number_format[3]" :key="index">
+      <span
+        class="number text-sm font-bold"
+        v-for="(number, index) in card_number_format[3]"
+        :key="index"
+      >
         {{ number }}
       </span>
     </div>
@@ -77,5 +85,8 @@ export default defineComponent({
 <style scoped>
 .bullet {
   font-size: 24px;
+}
+.number {
+  letter-spacing: 4px;
 }
 </style>

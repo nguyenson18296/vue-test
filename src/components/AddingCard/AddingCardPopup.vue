@@ -38,7 +38,9 @@
                       ></path>
                     </svg>
                   </label>
-                  <p v-if="errorMessage" class="error-message" style="color: red">{{ errorMessage }}</p>
+                  <p v-if="errorMessage" class="error-message" style="color: red">
+                    {{ errorMessage }}
+                  </p>
                 </form>
               </div>
             </div>

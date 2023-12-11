@@ -1,14 +1,14 @@
 <template>
   <div class="text-[#0c365a]">
-    <div class="card-actions w-full p-6 rounded-t-lg flex items-center">
+    <div class="card-actions w-full p-6 rounded-t-lg flex items-start">
       <div
         v-for="action in actions"
         :key="action.id"
-        class="card-actions__card-action-item flex flex-col items-center"
+        class="card-actions__card-action-item w-1/5 flex flex-col items-center"
         @click="action.action"
       >
         <img :src="action.icon" class="w-8 h-8 mb-2" />
-        <h4 class="text-center">
+        <h4 class="text-center px-1">
           {{ action.name }}
         </h4>
       </div>
