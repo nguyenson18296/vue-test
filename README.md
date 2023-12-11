@@ -2,7 +2,7 @@
 
 ## Project Setup
 
-# Node version
+### Node version
 ```
 v18.17.1
 ```
