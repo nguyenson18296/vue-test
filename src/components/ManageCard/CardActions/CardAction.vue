@@ -4,7 +4,7 @@
       <div
         v-for="action in actions"
         :key="action.id"
-        class="card-action-item flex flex-col items-center"
+        class="card-actions__card-action-item flex flex-col items-center"
         @click="action.action"
       >
         <img :src="action.icon" class="w-8 h-8 mb-2" />
@@ -129,7 +129,7 @@ export default defineComponent({
 .card-actions {
   background-color: #edf3ff;
 
-  .card-action-item {
+  &__card-action-item {
     font-size: 13px;
   }
 }

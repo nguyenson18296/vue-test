@@ -7,21 +7,23 @@
     <div>
       <img src="/src/assets/icons/logo.svg" class="float-right" />
       <div class="clear-both" />
-      <h1 class="card-owner-name font-bold text-[22px]">Mark Henry</h1>
+      <h1 class="card-wrapper__card-owner-name font-bold text-[22px]">Mark Henry</h1>
       <CardNumber :card_number="card.card_number" :show_card_number="showCardNumber" />
-      <div class="card-security mt-5 flex items-center">
-        <div class="expired-date font-bold text-[13px]">Thru: {{ card.expired_date }}</div>
-        <div class="cvv flex items-center ml-8 font-bold text-[13px]">
+      <div class="card-wrapper__card-security mt-5 flex items-center">
+        <div class="expired-date font-bold text-sm">Thru: {{ card.expired_date }}</div>
+        <div class="cvv flex items-center ml-8 font-bold text-sm">
           CVV:&nbsp;&nbsp;
-          <span class="text-sm font-bold" v-for="(number, index) in formattedCVV" :key="index">
-            {{ showCardNumber ? number : '*' }}
-          </span>
+          <div>
+            <span class="text-sm font-bold" v-for="(number, index) in formattedCVV" :key="index">
+              {{ showCardNumber ? number : '*' }}
+            </span>
+          </div>
         </div>
       </div>
       <img src="/src/assets/icons/visa.svg" class="float-right" />
     </div>
     <div
-      class="show-card rounded-md absolute right-0 top-[-30px] w-[155px] h-[40px] flex items-center text-center text-xs font-bold py-1.5 px-2.5"
+      class="card-wrapper__show-card rounded-md absolute right-0 top-[-30px] w-[155px] h-[40px] flex items-center text-center text-xs font-bold py-1.5 px-2.5"
       @click="onToggleShowCardNumber"
     >
         <img src="/src/assets/icons/eye.svg" />
@@ -78,12 +80,12 @@ export default defineComponent({
 .card-wrapper {
   color: #ffffff;
 
-  .show-card {
+  &__show-card {
     background-color: #ffffff;
     color: #01d167;
   }
 
-  .bullet {
+  &__bullet {
     font-size: 24px;
   }
 }

@@ -2,27 +2,27 @@
   <div class="transaction-item p-6 flex items-start justify-between">
     <div class="flex items-start">
       <div
-        class="icon w-12 h-12 rounded-full flex items-center justify-center"
-        :class="item.transaction_type"
+        class="transaction-item__icon w-12 h-12 rounded-full flex items-center justify-center"
+        :class="`transaction-item__${item.transaction_type}`"
       >
         <img :src="image[item.transaction_type]" />
       </div>
       <div class="ml-3 flex flex-col">
-        <h3 class="transaction-name text-sm">
+        <h3 class="transaction-item__transaction-name text-sm">
           {{ item.name }}
         </h3>
-        <span class="transaction-date"> {{ transactionDate }} </span>
+        <span class="transaction-item__transaction-date"> {{ transactionDate }} </span>
         <div class="action mt-3 flex items-center">
           <div class="action-icon w-6 h-6 rounded-full flex items-center justify-center">
             <img src="/src/assets/icons/pay.svg" class="w-2.5" />
           </div>
-          <span class="action-text ml-2 text-xs"> Refund on debit card </span>
+          <span class="transaction-item__action-text ml-2 text-xs"> Refund on debit card </span>
         </div>
       </div>
     </div>
     <div class="flex items-center">
         <span
-            class="balance font-bold mr-2.5"
+            class="transaction-item__balance font-bold mr-2.5"
             :class="balanceClassName"
         >
             {{ transactionbalance }}
@@ -67,11 +67,6 @@ export default defineComponent({
     }
   },
   computed: {
-    roundedColorBg() {
-      console.log('this.item.type', this.item.transaction_type)
-      console.log('thisroundedColor', this.roundedColor)
-      return `bg-[${this.roundedColor[this.item.transaction_type]}]`
-    },
     transactionbalance() {
         return Number(this.item.balance) > 0 ? `+ S$ ${this.item.balance}` : `- S$ ${this.item.balance}`;
     },
@@ -89,15 +84,15 @@ export default defineComponent({
 .transaction-item {
   border-bottom: 1px solid #f5f5f5;
 
-  .icon.storage {
+  &__storage {
     background-color: #009dff1a;
   }
 
-  .icon.travel {
+  &__travel {
     background-color: #00d6b51a;
   }
 
-  .icon.shopping {
+  &__shopping {
     background-color: #f251951a;
   }
 
