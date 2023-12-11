@@ -18,6 +18,7 @@
                       name="card_number"
                       placeholder="0000 0000 0000 0000"
                       v-model="card_number"
+                      type="text"
                       autocomplete="off"
                       maxlength="16"
                       @input="validate"
@@ -37,7 +38,7 @@
                       ></path>
                     </svg>
                   </label>
-                  <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
+                  <p v-if="errorMessage" class="error-message" style="color: red">{{ errorMessage }}</p>
                 </form>
               </div>
             </div>
@@ -98,7 +99,9 @@ export default defineComponent({
   },
   methods: {
     validate() {
-      if (/^\d+$/.test(this.card_number)) {
+      if (this.card_number.length < 16) {
+        this.errorMessage = 'The card number length is invalid'
+      } else if (/^\d+$/.test(this.card_number)) {
         this.errorMessage = '' // Input is a number, clear error message
       } else {
         this.errorMessage = 'Please enter a valid number.'

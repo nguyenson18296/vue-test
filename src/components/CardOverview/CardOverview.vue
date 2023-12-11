@@ -4,6 +4,7 @@
       <AccountBalance />
       <AddingCard :addCard="addCard" :isShowForm="isShowForm" />
     </div>
+    <CardTabs />
     <swiper
       :slidesPerView="'auto'"
       :spaceBetween="30"
@@ -30,16 +31,17 @@
 
 <script lang="ts">
 import { defineComponent, isProxy, toRaw, reactive } from 'vue'
-
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
+import { v4 as uuidv4 } from 'uuid';
 
 import AccountBalance from '../AccountBalance/AccountBalance.vue'
 import AddingCard from '../AddingCard/AddingCard.vue'
 import CardInformation, { ICardInformation } from '../CardInformation//CardInformation.vue'
 import CardAction from '../ManageCard/CardActions/CardAction.vue'
+import CardTabs from '../CardTabs/CardTabs.vue';
 import { generateExpiredDate, generateCVV } from '../../utils/utils'
 
 export default defineComponent({
@@ -63,7 +65,8 @@ export default defineComponent({
     CardAction,
     CardInformation,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    CardTabs
   },
   async created() {
     const response = await fetch('src/mocks/cards.json')
@@ -74,7 +77,7 @@ export default defineComponent({
   methods: {
     addCard(number: string) {
       const newCard: ICardInformation = {
-        id: 2,
+        id: uuidv4(),
         card_number: number,
         expired_date: generateExpiredDate(),
         cvv: generateCVV().toString(),
@@ -95,7 +98,6 @@ export default defineComponent({
     },
     onToggleFreezeCard(id: number) {
         const updatedCardIndex = this.cards.findIndex(item => item.id === id);
-
     // Update the specific card in the cards array
     this.cards[updatedCardIndex] = reactive({
         ...this.cards[updatedCardIndex],
@@ -110,17 +112,6 @@ export default defineComponent({
     this.$forceUpdate();
     }
   },
-  watch: {
-    activeCard: {
-        handler(newValue, oldValue) {
-            this.$forceUpdate();
-        // Note: `newValue` will be equal to `oldValue` here
-        // on nested mutations as long as the object itself
-        // hasn't been replaced.
-      },
-      deep: true
-    }
-  }
 })
 </script>
 

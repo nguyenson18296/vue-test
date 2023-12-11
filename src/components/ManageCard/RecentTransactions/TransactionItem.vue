@@ -35,7 +35,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
-import { formatDate } from "../../../utils/formatDate";
+import { formatDate } from "../../../utils/utils";
 
 export interface ITransactionItem {
   id: number
