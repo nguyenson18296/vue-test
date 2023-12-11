@@ -11,7 +11,7 @@
       </button>
       <button
         class="mr-2 px-4 py-2 text-sm rounded text-white bg-red-500 focus:outline-none hover:bg-red-400"
-        @click="onDeleteCard"
+        @click="onDelete"
       >
         Delete
       </button>
@@ -25,6 +25,7 @@ import { defineComponent } from 'vue'
 import Modal from '../Modal/ModalComponent.vue'
 
 export default defineComponent({
+  name: 'DeleteCardConfirmPopup',
   setup() {},
   props: {
     open: {
@@ -49,6 +50,9 @@ export default defineComponent({
   methods: {
     onClose() {
       this.onCloseModal()
+    },
+    onDelete() {
+      this.onDeleteCard();
     }
   }
 })

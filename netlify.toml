@@ -1,5 +1,6 @@
 [build]
     command = "yarn build-only"
     publish = "dist"
+    functions = "lambda"
 [functions]
-  included_files = ["mocks/cards.json", "mocks/transactions.json"]
+  included_files = ["mocks/cards.json", "mocks/transactions.json", "src/mocks/cards.json", "src/mocks/transactions.json"]

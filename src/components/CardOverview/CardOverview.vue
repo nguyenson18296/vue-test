@@ -16,10 +16,10 @@
       @activeIndexChange="onChange"
     >
       <swiper-slide class="swiper-slide-css" v-for="card in cards" :key="card.id">
-        <CardInformation :card="card" :isActive="!activeCard.is_card_freezed" />
+        <CardInformation v-if="activeCard" :card="card" :isActive="!activeCard.is_card_freezed" />
       </swiper-slide>
     </swiper>
-    <div class="manage-card">
+    <div class="manage-card" v-if="activeCard">
       <CardAction 
       :card="activeCard"
       :isActive="!activeCard.is_card_freezed"
@@ -57,7 +57,7 @@ export default defineComponent({
       activeIndex: 0,
       isShowForm: false,
       randomKey: 0,
-      activeCard: {},
+      activeCard: undefined,
     }
   },
   components: {
