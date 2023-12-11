@@ -1,7 +1,7 @@
 <template>
   <div class="card-wrapper relative pb-12 pt-16 px-0 w-full">
     <div
-      class="relative z-10 mx-auto p-6 w-[360px] h-[220px] bg-[#01D167] rounded-xl transition-all duration-200"
+      class="relative z-10 mx-auto p-6 w-full h-[220px] bg-[#01D167] rounded-xl transition-all duration-200"
       :class="isActive ? 'bg-[#01D167]' : 'bg-[#016633]'"
     >
       <div class="transition-all duration-200" :class="isActive ? '' : 'opacity-50'">
