@@ -8,7 +8,7 @@ v18.17.1
 ```
 
 ```sh
-npm install yarn install
+npm install
 ```
 or
 ```sh
