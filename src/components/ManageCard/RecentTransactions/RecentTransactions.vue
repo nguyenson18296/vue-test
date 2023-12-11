@@ -35,7 +35,7 @@ export default defineComponent({
     }
   },
   async created() {
-    const response = await fetch("src/mocks/transactions.json");
+    const response = await fetch("/mocks/transactions.json");
     const data = await response.json();
     this.data = data.response;
   }

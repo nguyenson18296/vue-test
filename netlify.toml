@@ -1,0 +1,5 @@
+[build]
+    command = "yarn build-only"
+    publish = "dist"
+[functions]
+  included_files = ["mocks/cards.json", "mocks/transactions.json"]

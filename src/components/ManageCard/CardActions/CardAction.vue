@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-[#0c365a]">
     <div class="card-actions w-full p-6 rounded-t-lg flex items-center">
       <div
         v-for="action in actions"
