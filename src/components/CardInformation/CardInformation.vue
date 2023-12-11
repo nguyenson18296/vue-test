@@ -37,7 +37,7 @@ import { defineComponent, PropType } from 'vue'
 import CardNumber from './CardNumber.vue'
 
 export interface ICardInformation {
-  id: number
+  id: string
   card_number: string
   expired_date: string
   cvv: string

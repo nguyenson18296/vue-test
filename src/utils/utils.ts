@@ -1,3 +1,10 @@
+export const formatDate = (
+  date: string,
+  options: any = { year: 'numeric', month: 'long', day: 'numeric' }
+): string => {
+  return new Date(date).toLocaleString('en-US', options)
+}
+
 export const generateExpiredDate = () => {
   const currentYear = new Date().getFullYear()
   const randomYear = currentYear + Math.floor(Math.random() * 5)
