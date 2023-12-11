@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card-information-item flex items-center justify-between p-6 mb-6"
+    class="card-information-item flex items-center justify-between p-6 mb-6 w-full h-[72px]"
     @click="handleToggle"
   >
     <div class="flex items-center">
@@ -46,8 +46,6 @@ export default defineComponent({
 <style lang="scss">
 .card-information-item {
   background-color: #fafcff;
-  width: 366px;
-  height: 72px;
   color: #0c365a;
   border: 1px solid #f5f5f5;
 }
