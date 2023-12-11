@@ -3,29 +3,29 @@
     <div>
       <span 
         class="text-sm"
-        :class="show_card_number ? 'number' : 'bullet'"
+        :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
         v-for="(number, index) in card_number_format[0]" :key="index"
     >
-        {{ show_card_number ? number : "*" }}
+        {{ show_card_number ? number : "•" }}
       </span>
     </div>
     <div class="ml-6">
       <span
         class="text-sm"
-        :class="show_card_number ? 'number' : 'bullet'"
+        :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
         v-for="(number, index) in card_number_format[1]"
         :key="index"
       >
-        {{ show_card_number ? number : "*" }}
+        {{ show_card_number ? number : "•" }}
       </span>
     </div>
     <div class="ml-6">
       <span 
         class="text-sm"
-        :class="show_card_number ? 'number' : 'bullet'"
+        :class="show_card_number ? 'number text-sm font-bold' : 'bullet ml-1 font-bold'"
          v-for="(number, index) in card_number_format[2]" :key="index"
         >
-        {{ show_card_number ? number : "*" }}
+        {{ show_card_number ? number : "•" }}
       </span>
     </div>
     <div class="ml-6 text-sm">

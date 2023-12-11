@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card-actions w-full p-8 rounded-t-lg flex items-center">
+    <div class="card-actions w-full p-6 rounded-t-lg flex items-center">
       <div
         v-for="action in actions"
         :key="action.id"
@@ -14,14 +14,17 @@
       </div>
     </div>
     <CardManage />
-    <DeleteCardConfirmPopup :open="isShowDeleteModal" :onCloseModal="onCancelDeleteCard" :onDeleteCard="onDeleteCard" />
+    <DeleteCardConfirmPopup
+      :open="isShowDeleteModal"
+      :onCloseModal="onCancelDeleteCard"
+      :onDeleteCard="onDeleteCard"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 
-import { ICardAction } from '../../../types/types'
 import CardManage from '../CardManage/CardManage.vue'
 import { ICardInformation } from '../../CardInformation/CardInformation.vue'
 import DeleteCardConfirmPopup from '../../DeleteCard/DeleteCardConfirmPopup.vue'
@@ -35,15 +38,18 @@ export default defineComponent({
   props: {
     card: {
       type: Object as PropType<ICardInformation>
+    },
+    isActive: {
+      type: Boolean
     }
   },
   data() {
-    const cardActions: ICardAction[] = [
+    const cardActions = ref([
       {
         id: 1,
         icon: 'src/assets/icons/freeze-card.svg',
         name: 'Freeze card',
-        action: () => {}
+        action: () => this.onToggleFreezedCard()
       },
       {
         id: 2,
@@ -69,17 +75,30 @@ export default defineComponent({
         name: 'Cancel card',
         action: () => this.onOpenConfirmDeleteCard()
       }
-    ]
+    ])
     return {
       actions: cardActions,
       isCardActive: false,
       isShowDeleteModal: false
     }
   },
+  watch: {
+    isActive(value) {
+      this.actions = [...this.actions].map((item) => {
+        if (item.id === 1) {
+          return {
+            ...item,
+            name: value ? 'Freeze card' : 'Unfreeze card'
+          }
+        }
+        return item
+      })
+    }
+  },
   created() {
     this.isCardActive = !this.card?.is_card_freezed
     this.actions = [...this.actions].map((item) => {
-      if (item.name === 'Freeze card') {
+      if (item.id === 1) {
         return {
           ...item,
           name: this.isCardActive ? 'Freeze card' : 'Unfreeze card'
@@ -90,16 +109,17 @@ export default defineComponent({
   },
   methods: {
     onOpenConfirmDeleteCard() {
-      console.log("isShowDeleteModal");
-      this.isShowDeleteModal = true;
+      this.isShowDeleteModal = true
     },
     onCancelDeleteCard() {
-      this.isShowDeleteModal = false;
+      this.isShowDeleteModal = false
     },
     onDeleteCard() {
-      this.$emit('delete-card', this.card.id);
-      this.onCancelDeleteCard();
-
+      this.$emit('delete-card', this.card.id)
+      this.onCancelDeleteCard()
+    },
+    onToggleFreezedCard() {
+      this.$emit('on-toggle-freezez-card', this.card.id)
     }
   }
 })

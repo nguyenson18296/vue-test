@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h4 class="text-sm mb-4"></h4>
-    <div class="flex items-center justify-between px-6">
+  <div class="py-8">
+    <div class="flex items-end justify-between px-6">
       <AccountBalance />
       <AddingCard :addCard="addCard" :isShowForm="isShowForm" />
     </div>
@@ -13,21 +12,24 @@
       }"
       :modules="modules"
       @activeIndexChange="onChange"
-      @slideChange="changeSwiperIndex"
-      ref="mySwiper"
     >
       <swiper-slide v-for="card in cards" :key="card.id">
-        <CardInformation :card="card" />
+        <CardInformation :card="card" :isActive="!activeCard.is_card_freezed" />
       </swiper-slide>
     </swiper>
     <div class="manage-card">
-      <CardAction :card="activeCard" @delete-card="onDeleteCard" />
+      <CardAction 
+      :card="activeCard"
+      :isActive="!activeCard.is_card_freezed"
+      @delete-card="onDeleteCard" 
+      @on-toggle-freezez-card="onToggleFreezeCard" 
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, isProxy, toRaw } from 'vue'
+import { defineComponent, isProxy, toRaw, reactive } from 'vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
@@ -51,6 +53,7 @@ export default defineComponent({
       cards: [],
       activeIndex: 0,
       isShowForm: false,
+      randomKey: 0,
       activeCard: {},
     }
   },
@@ -80,7 +83,6 @@ export default defineComponent({
       this.cards.push(newCard)
     },
     onChange(varuable) {
-      console.log(varuable)
       if (isProxy(varuable)) {
         const rawObject = toRaw(varuable)
         this.activeIndex = rawObject?.activeIndex ?? 0
@@ -90,12 +92,33 @@ export default defineComponent({
     onDeleteCard(id: number) {
         const newListCard = this.cards.filter(item => item.id !== id);
         this.cards = newListCard;
-        console.log("this.cards", this.cards);
+    },
+    onToggleFreezeCard(id: number) {
+        const updatedCardIndex = this.cards.findIndex(item => item.id === id);
+
+    // Update the specific card in the cards array
+    this.cards[updatedCardIndex] = reactive({
+        ...this.cards[updatedCardIndex],
+        is_card_freezed: !this.cards[updatedCardIndex].is_card_freezed
+    });
+
+    // Update the activeCard object directly (if it's supposed to be the same as the updated card)
+    this.activeCard = reactive({
+        ...this.activeCard,
+        is_card_freezed: !this.activeCard.is_card_freezed
+    });
+    this.$forceUpdate();
     }
   },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper
+  watch: {
+    activeCard: {
+        handler(newValue, oldValue) {
+            this.$forceUpdate();
+        // Note: `newValue` will be equal to `oldValue` here
+        // on nested mutations as long as the object itself
+        // hasn't been replaced.
+      },
+      deep: true
     }
   }
 })
