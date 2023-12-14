@@ -12,7 +12,7 @@ import CardManageItem, { ICardManageInfoItem } from '../CardManage/CardManageIte
 const mockedItem: ICardManageInfoItem = {
   id: 1,
   name: 'Card details',
-  icon: '/src/assets/icons/card-details.svg'
+  icon: '../../../assets/icons/card-details.svg'
 }
 
 export default defineComponent({

@@ -14,7 +14,7 @@
         <span class="transaction-item__transaction-date"> {{ transactionDate }} </span>
         <div class="action mt-3 flex items-center">
           <div class="action-icon w-6 h-6 rounded-full flex items-center justify-center">
-            <img src="/src/assets/icons/pay.svg" class="w-2.5" />
+            <img src="../../../assets/icons/pay.svg" class="w-2.5" />
           </div>
           <span class="transaction-item__action-text ml-2 text-xs"> Refund on debit card </span>
         </div>
@@ -24,7 +24,7 @@
       <span class="transaction-item__balance font-bold mr-2.5" :class="balanceClassName">
         {{ transactionbalance }}
       </span>
-      <img src="/src/assets/icons/next.svg" alt="next" />
+      <img src="../../../assets/icons/next.svg" alt="next" />
     </div>
   </div>
 </template>
