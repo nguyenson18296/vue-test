@@ -17,7 +17,7 @@ import TransactionItem from './TransactionItem.vue'
 const mockedItem: ICardManageInfoItem = {
   id: 2,
   name: 'Recent transactions',
-  icon: '/src/assets/icons/recent-transactions.svg'
+  icon: '../../../assets/icons/recent-transactions.svg'
 }
 
 export default defineComponent({

@@ -1,6 +1,6 @@
 <template>
   <div class="adding-card flex items-center">
-    <img src="/src/assets/icons/add-card.svg" alt="add-card" />
+    <img src="../../assets/icons/add-card.svg" alt="add-card" />
     <span class="new-card font-bold ml-1.5" @click="isShowForm = true"> New card </span>
     <AddingCardPopup :open="isShowForm" :onCloseModal="onCloseModal" @add-card="addCard" />
   </div>

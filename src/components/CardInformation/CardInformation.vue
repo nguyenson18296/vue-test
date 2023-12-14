@@ -5,7 +5,7 @@
       :class="isActive ? 'bg-[#01D167]' : 'bg-[#016633]'"
     >
       <div class="transition-all duration-200" :class="isActive ? '' : 'opacity-50'">
-        <img src="/src/assets/icons/logo.svg" class="float-right" />
+        <img src="../../assets/icons/logo.svg" class="float-right" />
         <div class="clear-both" />
         <h1 class="card-wrapper__card-owner-name font-bold text-[22px]">Mark Henry</h1>
         <CardNumber :card_number="card.card_number" :show_card_number="showCardNumber" />
@@ -20,14 +20,14 @@
             </div>
           </div>
         </div>
-        <img src="/src/assets/icons/visa.svg" class="float-right" />
+        <img src="../../assets/icons/visa.svg" class="float-right" />
       </div>
     </div>
     <div
       class="card-wrapper__show-card rounded-md absolute right-0.5 top-8 w-[155px] h-[40px] flex items-center text-center text-xs font-bold py-1.5 px-2.5 z-0"
       @click="onToggleShowCardNumber"
     >
-      <img src="/src/assets/icons/eye.svg" />
+      <img src="../../assets/icons/eye.svg" />
       <span class="ml-1.5 font-bold"> Show card number </span>
     </div>
   </div>
